@@ -5,6 +5,9 @@
  * This program drives car and stops before hitting wall
 */
 
+// variables
+let distanceToObject: number = 0
+
 // setup
 basic.showIcon(IconNames.Happy)
 
