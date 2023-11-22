@@ -7,3 +7,7 @@
 
 // setup
 basic.showIcon(IconNames.Happy)
+
+while (true) {
+  robotbit.StpCarMove(10, 42)
+}
