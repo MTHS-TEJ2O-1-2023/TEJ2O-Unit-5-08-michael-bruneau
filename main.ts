@@ -9,5 +9,6 @@
 basic.showIcon(IconNames.Happy)
 
 while (true) {
-  robotbit.StpCarMove(10, 42)
+  if (input.buttonIsPressed(Button.A) == true)
+    robotbit.StpCarMove(10, 42)
 }
