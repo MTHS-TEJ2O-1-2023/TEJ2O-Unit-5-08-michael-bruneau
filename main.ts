@@ -24,8 +24,10 @@ while (true) {
       robotbit.StpCarMove(10, 42)
     }
     robotbit.StpCarMove(-10, 42)
+    basic.pause(5000)
     robotbit.StpCarTurn(90, 48, 125)
     distanceToObject = 20
+    basic.pause(5000)
     if (input.buttonIsPressed(Button.B) == true) {
       distanceToObject = 0
     }
