@@ -6,7 +6,7 @@
 */
 
 // variables
-let distanceToObject: number = 0
+let distanceToObject: number = 20
 
 // setup
 basic.showIcon(IconNames.Happy)
