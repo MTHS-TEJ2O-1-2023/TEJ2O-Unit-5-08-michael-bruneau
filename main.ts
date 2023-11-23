@@ -20,7 +20,7 @@ while (true) {
         DigitalPin.P2,
         PingUnit.Centimeters
       )
-      basic.showNumber(distanceToObject)
+      basic.showString(distanceToObject.toString() + ('cm'))
       robotbit.StpCarMove(10, 42)
     }
   robotbit.StpCarMove(-10, 42)
