@@ -12,7 +12,7 @@ let distanceToObject: number = 0
 basic.showIcon(IconNames.Happy)
 
 while (true) {
-  if (input.buttonIsPressed(Button.A) == true)
+  if (input.buttonIsPressed(Button.A) == true) {
     while (distanceToObject >= 11) {
       distanceToObject = sonar.ping(
         DigitalPin.P1,
@@ -21,6 +21,7 @@ while (true) {
       )
       robotbit.StpCarMove(10, 42)
     }
-    robotbit.StpCarMove(-10, 42)
-    robotbit.StepperTurn(robotbit.Steppers.M1, robotbit.Turns.T1B4)
+  robotbit.StpCarMove(-10, 42)
+  robotbit.StepperTurn(robotbit.Steppers.M1, robotbit.Turns.T1B4)
+  }
 }
