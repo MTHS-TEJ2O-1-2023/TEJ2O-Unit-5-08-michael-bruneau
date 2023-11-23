@@ -23,11 +23,11 @@ while (true) {
       basic.showString(distanceToObject.toString() + ('cm'))
       robotbit.StpCarMove(10, 42)
     }
-  robotbit.StpCarMove(-10, 42)
-  robotbit.StpCarTurn(90, 48, 125)
-  distanceToObject = 20
-  if (input.buttonIsPressed(Button.B) == true) {
-    distanceToObject = 0
-  }
+    robotbit.StpCarMove(-10, 42)
+    robotbit.StpCarTurn(90, 48, 125)
+    distanceToObject = 20
+    if (input.buttonIsPressed(Button.B) == true) {
+      distanceToObject = 0
+    }
   }
 }
