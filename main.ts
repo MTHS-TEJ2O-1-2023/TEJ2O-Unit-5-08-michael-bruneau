@@ -14,6 +14,7 @@ basic.showIcon(IconNames.Happy)
 while (true) {
   if (input.buttonIsPressed(Button.A) == true) {
     while (distanceToObject >= 11) {
+      basic.showIcon(IconNames.Yes)
       distanceToObject = sonar.ping(
         DigitalPin.P1,
         DigitalPin.P2,
