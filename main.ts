@@ -13,5 +13,14 @@ basic.showIcon(IconNames.Happy)
 
 while (true) {
   if (input.buttonIsPressed(Button.A) == true)
-    robotbit.StpCarMove(10, 42)
+    while (distanceToObject >= 11) {
+      distanceToObject = sonar.ping(
+        DigitalPin.P1,
+        DigitalPin.P2,
+        PingUnit.Centimeters
+      )
+      robotbit.StpCarMove(10, 42)
+    }
+    robotbit.StpCarMove(-10, 42)
+    robotbit.StepperTurn(robotbit.Steppers.M1, robotbit.Turns.T1B4)
 }
