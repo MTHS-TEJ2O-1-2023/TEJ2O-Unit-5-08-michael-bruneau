@@ -24,6 +24,6 @@ while (true) {
       robotbit.StpCarMove(10, 42)
     }
   robotbit.StpCarMove(-10, 42)
-  robotbit.StepperTurn(robotbit.Steppers.M1, robotbit.Turns.T1B4)
+  robotbit.StpCarTurn(90, 48, 125)
   }
 }
