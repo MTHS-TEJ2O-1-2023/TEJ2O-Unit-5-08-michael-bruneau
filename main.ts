@@ -13,7 +13,7 @@ basic.showIcon(IconNames.Happy)
 
 while (true) {
   if (input.buttonIsPressed(Button.A) == true) {
-    while (true) {
+    while (input.buttonIsPressed(Button.B) == false) {
       basic.showString(distanceToObject.toString() + ('cm'))
       if (distanceToObject >= 11) {
         basic.showIcon(IconNames.Yes)
@@ -30,9 +30,6 @@ while (true) {
         robotbit.StpCarTurn(90, 42, 125)
         distanceToObject = 20
         basic.pause(5000)
-      }
-      if (input.buttonIsPressed(Button.B) == true) {
-        distanceToObject = 0
       }
     }
   }
