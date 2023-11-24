@@ -23,6 +23,7 @@ while (true) {
         )
         basic.showString(distanceToObject.toString() + ('cm'))
         robotbit.StpCarMove(10, 42)
+        basic.pause(5000)
       } else {
         robotbit.StpCarMove(-10, 42)
         basic.pause(5000)
