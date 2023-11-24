@@ -32,8 +32,8 @@ while (true) {
         basic.pause(5000)
       }
       if (input.buttonIsPressed(Button.B) == true) {
-       distanceToObject = 0
+        distanceToObject = 0
+      }
     }
   }
-}
 }
