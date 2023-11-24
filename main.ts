@@ -13,23 +13,26 @@ basic.showIcon(IconNames.Happy)
 
 while (true) {
   if (input.buttonIsPressed(Button.A) == true) {
-    while (distanceToObject >= 11) {
-      basic.showIcon(IconNames.Yes)
-      distanceToObject = sonar.ping(
-        DigitalPin.P1,
-        DigitalPin.P2,
-        PingUnit.Centimeters
-      )
-      basic.showString(distanceToObject.toString() + ('cm'))
-      robotbit.StpCarMove(10, 42)
-    }
-    robotbit.StpCarMove(-10, 42)
-    basic.pause(5000)
-    robotbit.StpCarTurn(90, 48, 125)
-    distanceToObject = 20
-    basic.pause(5000)
-    if (input.buttonIsPressed(Button.B) == true) {
-      distanceToObject = 0
+    while (true) {
+      if (distanceToObject >= 11) {
+        basic.showIcon(IconNames.Yes)
+        distanceToObject = sonar.ping(
+          DigitalPin.P1,
+          DigitalPin.P2,
+          PingUnit.Centimeters
+        )
+        basic.showString(distanceToObject.toString() + ('cm'))
+        robotbit.StpCarMove(10, 42)
+      } else {
+        robotbit.StpCarMove(-10, 42)
+        basic.pause(5000)
+        robotbit.StpCarTurn(90, 42, 125)
+        distanceToObject = 20
+        basic.pause(5000)
+      }
+      if (input.buttonIsPressed(Button.B) == true) {
+       distanceToObject = 0
     }
   }
+}
 }
