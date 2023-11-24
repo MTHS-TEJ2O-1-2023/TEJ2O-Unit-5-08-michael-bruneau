@@ -6,7 +6,7 @@
 */
 
 // variables
-let distanceToObject: number = 0
+let distanceToObject: number = 20
 
 // setup
 basic.showIcon(IconNames.Happy)
@@ -14,14 +14,14 @@ basic.showIcon(IconNames.Happy)
 while (true) {
   if (input.buttonIsPressed(Button.A) == true) {
     while (true) {
-      basic.showIcon(IconNames.Yes)
-      distanceToObject = sonar.ping(
-        DigitalPin.P1,
-        DigitalPin.P2,
-        PingUnit.Centimeters
-      )
+      basic.showString(distanceToObject.toString() + ('cm'))
       if (distanceToObject >= 11) {
-        basic.showString(distanceToObject.toString() + ('cm'))
+        basic.showIcon(IconNames.Yes)
+        distanceToObject = sonar.ping(
+          DigitalPin.P1,
+          DigitalPin.P2,
+          PingUnit.Centimeters
+        )
         robotbit.StpCarMove(10, 42)
         basic.pause(5000)
       } else {
