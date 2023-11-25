@@ -32,7 +32,7 @@ while (true) {
         robotbit.StpCarMove(10, 42)
         basic.pause(500)
 
-        // if 10 cm or less move car 10 cm back and turn right
+      // if 10 cm or less move car 10 cm back and turn right
       } else {
         robotbit.StpCarMove(-10, 42)
         basic.pause(500)
