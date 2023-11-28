@@ -5,8 +5,6 @@ This module is a Micro:bit MicroPython program
 """
 
 from microbit import *
-from robotbit import *
-
 
 class HCSR04:
     # this class abstracts out the functionality of the HC-SR04 and
