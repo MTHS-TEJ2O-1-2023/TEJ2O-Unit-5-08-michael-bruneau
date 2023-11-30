@@ -66,10 +66,10 @@ while True:
             distance = sonar.distance_mm() / 10
             display.show(distance)
             if distance >= 11:
-                robotbit.stp_car_move(10, 42)
+
                 sleep(500)
             else:
-                robotbit.stp_car_move(-10, 42)
+
                 sleep(500)
-                robotbit.stp_car_turn(90, 42, 125)
+
                 sleep(500)
