@@ -13,7 +13,7 @@ basic.showIcon(IconNames.Happy)
 
 // loop forever
 while (true) {
-  if (input.buttonIsPressed(Button.A) == true) {
+  if (input.buttonIsPressed(Button.A) === true) {
     basic.showIcon(IconNames.Yes)
 
     // loop everthing
