@@ -1,75 +1,33 @@
-"""
-Created by: Michael Bruneau 
+""" 
+Copyright (c) 2020 MTHS All rights reserved
+Created by: Michael Bruneau
 Created on: Nov 2023
-This module is a Micro:bit MicroPython program
+This program drives car and stops before hitting wall
 """
 
-from microbit import *
-
-class HCSR04:
-    # this class abstracts out the functionality of the HC-SR04 and
-    #   returns distance in mm
-    # Trig: pin 1
-    # Echo: pin 2
-    def __init__(self, tpin=pin1, epin=pin2, spin=pin13):
-        self.trigger_pin = tpin
-        self.echo_pin = epin
-        self.sclk_pin = spin
-
-    def distance_mm(self):
-        spi.init(
-            baudrate=125000,
-            sclk=self.sclk_pin,
-            mosi=self.trigger_pin,
-            miso=self.echo_pin,
-        )
-        pre = 0
-        post = 0
-        k = -1
-        length = 500
-        resp = bytearray(length)
-        resp[0] = 0xFF
-        spi.write_readinto(resp, resp)
-        # find first non zero value
-        try:
-            i, value = next((ind, v) for ind, v in enumerate(resp) if v)
-        except StopIteration:
-            i = -1
-        if i > 0:
-            pre = bin(value).count("1")
-            # find first non full high value afterwards
-            try:
-                k, value = next(
-                    (ind, v)
-                    for ind, v in enumerate(resp[i : length - 2])
-                    if resp[i + ind + 1] == 0
-                )
-                post = bin(value).count("1") if k else 0
-                k = k + i
-            except StopIteration:
-                i = -1
-        dist = -1 if i < 0 else round(((pre + (k - i) * 8.0 + post) * 8 * 0.172) / 2)
-        return dist
-
-
-# variabels
-sonar = HCSR04()
+import robotbit
+import sonar
 
 # setup
-display.show(Image.HEART)
+basic.show_icon(IconNames.HAPPY)
 
-# checking distance from object
+# loop forever
 while True:
-    if button_a.is_pressed():
-        display.show(Image.YES)
+    if input.button_is_pressed(Button.A):
         while True:
-            distance = sonar.distance_mm() / 10
-            display.show(distance)
+            # checking distance
+            distance = sonar.ping(DigitalPin.P1, DigitalPin.P2, PingUnit.CENTIMETERS)
+            basic.show_number(distance)
+            basic.show_string("cm")
+
+            # if distance if 11 or greater move stepper moters 10 cm forward
             if distance >= 11:
+                robotbit.stp_car_move(10, 42)
+                basic.pause(500)
 
-                sleep(500)
+                # if stepper motor is 10 cm or less than 10 cm turn stepper motors 10 cm backward & turn 90 deegres
             else:
-
-                sleep(500)
-
-                sleep(500)
+                robotbit.stp_car_move(-10, 42)
+                basic.pause(500)
+                robotbit.stp_car_turn(90, 42, 125)
+                basic.pause(500)
